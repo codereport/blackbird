@@ -28,7 +28,7 @@ auto _psi = [](auto f, auto g) {
 // more convenient binary/unary operations //
 /////////////////////////////////////////////
 
-auto _eq = [](auto x) { return [x](auto y) { return x == 'y'; }; };
+auto _eq = [](auto x) { return [x](auto y) { return x == y; }; };
 auto _eq_ = std::equal_to{};
 auto _or = std::logical_or{};
 auto _and = std::logical_and{};

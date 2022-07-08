@@ -24,6 +24,9 @@ auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y
 
 auto _eq    = [](auto x) { return [x](auto y) { return x == y; }; };
 auto _eq_   = std::equal_to{};
+auto _lt    = [](auto x) { return [x](auto y) { return x > y; }; };
+auto lt_    = [](auto x) { return [x](auto y) { return y < x; }; };
+auto _lt_   = std::less{};
 auto _plus  = [](auto x) { return [x](auto y) { return x + y; }; };
 auto _plus_ = std::plus{};
 auto _or_   = std::logical_or{};

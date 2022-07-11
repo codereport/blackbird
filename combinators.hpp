@@ -29,6 +29,11 @@ auto lt_    = [](auto x) { return [x](auto y) { return y < x; }; };
 auto _lt_   = std::less{};
 auto _plus  = [](auto x) { return [x](auto y) { return x + y; }; };
 auto _plus_ = std::plus{};
+auto _mul   = [](auto x) { return [x](auto y) { return x * y; }; };
+auto _mul_  = std::multiplies{};
+auto _sub   = [](auto x) { return [x](auto y) { return x - y; }; };
+auto sub_   = [](auto x) { return [x](auto y) { return y - x; }; };
+auto _sub_  = std::minus{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
 

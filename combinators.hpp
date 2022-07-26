@@ -2,6 +2,7 @@
 #pragma once
 
 #include <functional>
+#include <utility>
 
 namespace combinators {
 
@@ -10,13 +11,17 @@ namespace combinators {
 /////////////////
 
 // B (The Bluebird)
-auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
+auto _b = [](auto f, auto g) { return [=](auto&& x) { return f(g(std::forward<decltype(x)>(x))); }; };
 
 // Phi (The Phoenix)
-auto _phi = [](auto f, auto g, auto h) { return [=](auto x) { return g(f(x), h(x)); }; };
+auto _phi = [](auto f, auto g, auto h) {
+    return [=](auto&& x) { return g(f(std::forward<decltype(x)>(x)), h(std::forward<decltype(x)>(x))); };
+};
 
 // Psi (The Psi Bird)
-auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y)); }; };
+auto _psi = [](auto f, auto g) {
+    return [=](auto&& x, auto&& y) { return f(g(std::forward<decltype(x)>(x)), g(std::forward<decltype(y)>(y))); };
+};
 
 /////////////////////////////////////////////
 // more convenient binary/unary operations //

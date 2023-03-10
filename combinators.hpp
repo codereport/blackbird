@@ -36,5 +36,6 @@ auto sub_   = [](auto x) { return [x](auto y) { return y - x; }; };
 auto _sub_  = std::minus{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
+auto _not   = std::logical_not{};
 
 }  // namespace combinators

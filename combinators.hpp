@@ -14,16 +14,16 @@ auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
 
 // K (Kestrel)
 auto _l_ = [](auto x, auto y) { return x; };
-  
+
 // KI
 auto _r_ = [](auto x, auto y) { return y; };
-  
+
 // Phi (The Phoenix)
 auto _phi = [](auto f, auto g, auto h) { return [=](auto x) { return g(f(x), h(x)); }; };
 
 // Phi1 (The Pheasant)
 auto _phi1_ = [](auto f, auto g, auto h) { return [=](auto x, auto y) { return g(f(x, y), h(x, y)); }; };
-    
+
 // Psi (The Psi Bird)
 auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y)); }; };
 
@@ -33,6 +33,7 @@ auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y
 
 auto _eq    = [](auto x) { return [x](auto y) { return x == y; }; };
 auto _eq_   = std::equal_to{};
+auto _neq_  = std::not_equal_to{};
 auto _lt    = [](auto x) { return [x](auto y) { return x > y; }; };
 auto lt_    = [](auto x) { return [x](auto y) { return y < x; }; };
 auto _lt_   = std::less{};

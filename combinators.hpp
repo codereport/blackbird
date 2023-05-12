@@ -48,5 +48,7 @@ auto _sub_  = std::minus{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
 auto _not   = std::logical_not{};
+auto _fst   = [](auto t) { return std::get<0>(t); };
+auto _snd   = [](auto t) { return std::get<1>(t); };
 
 }  // namespace combinators

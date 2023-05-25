@@ -12,6 +12,9 @@ namespace combinators {
 // B (The Bluebird)
 auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
 
+// C (The Cardinal) aka `flip` in Haskell
+auto _c = [](auto f) { return [=](auto x, auto y) { return f(y, x); }; };
+
 // K (Kestrel)
 auto _l_ = [](auto x, auto y) { return x; };
 
@@ -48,6 +51,8 @@ auto _sub_  = std::minus{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
 auto _not   = std::logical_not{};
+auto _min_  = [](auto a, auto b) { return std::min(a, b); };
+auto _max_  = [](auto a, auto b) { return std::max(a, b); };
 auto _fst   = [](auto t) { return std::get<0>(t); };
 auto _snd   = [](auto t) { return std::get<1>(t); };
 

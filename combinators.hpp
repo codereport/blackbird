@@ -12,6 +12,9 @@ namespace combinators {
 // B (The Bluebird)
 auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
 
+// B1 (The Blackbird)
+auto _b1 = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x, y)); }; };
+
 // C (The Cardinal) aka `flip` in Haskell
 auto _c = [](auto f) { return [=](auto x, auto y) { return f(y, x); }; };
 

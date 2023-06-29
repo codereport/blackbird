@@ -62,4 +62,7 @@ auto _max_  = [](auto a, auto b) { return std::max(a, b); };
 auto _fst   = [](auto t) { return std::get<0>(t); };
 auto _snd   = [](auto t) { return std::get<1>(t); };
 
+auto _odd  = [](auto x) { return (x % 2) == 1; };
+auto _even = [](auto x) { return (x % 2) == 0; };
+
 }  // namespace combinators

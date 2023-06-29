@@ -30,6 +30,9 @@ auto _phi1_ = [](auto f, auto g, auto h) { return [=](auto x, auto y) { return g
 // Psi (The Psi Bird)
 auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y)); }; };
 
+// W (The Warbler)
+auto _w = [](auto f) { return [=](auto x) { return f(x, x); }; };
+
 /////////////////////////////////////////////
 // more convenient binary/unary operations //
 /////////////////////////////////////////////

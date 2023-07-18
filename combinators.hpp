@@ -15,6 +15,9 @@ auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
 // BB (The Bluebird^2)
 auto _bb = [](auto f, auto g, auto h) { return [=](auto x) { return f(g(h(x))); }; };
 
+// BBB (The Bluebird^3)
+auto _bbb = [](auto f, auto g, auto h, auto i) { return [=](auto x) { return f(g(h(i(x)))); }; };
+
 // B1 (The Blackbird)
 auto _b1 = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x, y)); }; };
 

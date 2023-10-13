@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include <cmath>
 #include <functional>
 
 namespace combinators {
@@ -66,6 +67,7 @@ auto _sub_  = std::minus{};
 auto _mod   = [](auto x) { return [x](auto y) { return x % y; }; };
 auto mod_   = [](auto x) { return [x](auto y) { return y % x; }; };
 auto _mod_  = std::modulus{};
+auto _pow_  = [](auto a, auto b) { return std::pow(a, b); };
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
 auto _neg   = std::negate{};

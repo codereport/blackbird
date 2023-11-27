@@ -80,8 +80,11 @@ auto _fst   = [](auto t) { return std::get<0>(t); };
 auto _snd   = [](auto t) { return std::get<1>(t); };
 
 // conversions
-auto _int  = [](auto x) { return static_cast<int>(x); };
-auto _bool = [](auto x) { return static_cast<bool>(x); };
+auto _int    = [](auto x) { return static_cast<int>(x); };
+auto _uint   = [](auto x) { return static_cast<unsigned int>(x); };
+auto _bool   = [](auto x) { return static_cast<bool>(x); };
+auto _float  = [](auto x) { return static_cast<float>(x); };
+auto _double = [](auto x) { return static_cast<double>(x); };
 
 auto _rshift_  = [](auto x, auto y) { return x >> y; };
 auto _bit_and_ = std::bit_and{};

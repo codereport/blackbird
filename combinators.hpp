@@ -68,6 +68,7 @@ auto _mod   = [](auto x) { return [x](auto y) { return x % y; }; };
 auto mod_   = [](auto x) { return [x](auto y) { return y % x; }; };
 auto _mod_  = std::modulus{};
 auto _pow_  = [](auto x, auto y) { return std::pow(x, y); };
+auto _div_  = std::divides{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};
 auto _neg   = std::negate{};
@@ -76,9 +77,18 @@ auto _sign  = [](auto x) { return x > 0 ? 1 : x < 0 ? -1 : 0; };
 auto _sqrt  = [](auto x) { return std::sqrt(x); };
 auto _min_  = [](auto x, auto y) { return std::min(x, y); };
 auto _max_  = [](auto x, auto y) { return std::max(x, y); };
-auto _fst   = [](auto t) { return std::get<0>(t); };
-auto _snd   = [](auto t) { return std::get<1>(t); };
-auto _bool  = [](auto x) { return static_cast<bool>(x); };
+
+// conversions
+auto _int    = [](auto x) { return static_cast<int>(x); };
+auto _uint   = [](auto x) { return static_cast<unsigned int>(x); };
+auto _bool   = [](auto x) { return static_cast<bool>(x); };
+auto _float  = [](auto x) { return static_cast<float>(x); };
+auto _double = [](auto x) { return static_cast<double>(x); };
+
+template<int N>
+auto _nth = [](auto t) { return std::get<N>(t); };
+auto _fst = [](auto t) { return std::get<0>(t); };
+auto _snd = [](auto t) { return std::get<1>(t); };
 
 auto _rshift_  = [](auto x, auto y) { return x >> y; };
 auto _bit_and_ = std::bit_and{};

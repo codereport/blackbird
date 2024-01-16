@@ -25,6 +25,9 @@ auto _b1 = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x, y)); 
 // C (The Cardinal) aka `flip` in Haskell
 auto _c = [](auto f) { return [=](auto x, auto y) { return f(y, x); }; };
 
+// D2 (The Dovekie)
+auto _d2_ = [](auto f, auto g, auto h) { return [=](auto x, auto y) { return g(f(x), h(y)); }; };
+
 // K (Kestrel)
 auto _l_ = [](auto x, auto y) { return x; };
 
@@ -85,7 +88,7 @@ auto _bool   = [](auto x) { return static_cast<bool>(x); };
 auto _float  = [](auto x) { return static_cast<float>(x); };
 auto _double = [](auto x) { return static_cast<double>(x); };
 
-template<int N>
+template <int N>
 auto _nth = [](auto t) { return std::get<N>(t); };
 auto _fst = [](auto t) { return std::get<0>(t); };
 auto _snd = [](auto t) { return std::get<1>(t); };

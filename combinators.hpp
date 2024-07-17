@@ -10,6 +10,9 @@ namespace combinators {
 // combinators //
 /////////////////
 
+// I (no bird name)
+auto _id = std::identity{};
+
 // B (The Bluebird)
 auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
 
@@ -71,6 +74,8 @@ auto _mod   = [](auto x) { return [x](auto y) { return x % y; }; };
 auto mod_   = [](auto x) { return [x](auto y) { return y % x; }; };
 auto _mod_  = std::modulus{};
 auto _pow_  = [](auto x, auto y) { return std::pow(x, y); };
+auto _div   = [](auto x) { return [x](auto y) { return x / y; }; };
+auto div_   = [](auto x) { return [x](auto y) { return y / x; }; };
 auto _div_  = std::divides{};
 auto _or_   = std::logical_or{};
 auto _and_  = std::logical_and{};

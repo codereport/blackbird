@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <functional>
+#include <utility>
 
 namespace combinators {
 
@@ -14,7 +15,7 @@ namespace combinators {
 auto _id = std::identity{};
 
 // B (The Bluebird)
-auto _b = [](auto f, auto g) { return [=](auto x) { return f(g(x)); }; };
+auto _b = [](auto f, auto g) { return [=](auto&& x) { return f(g(std::forward<decltype(x)>(x))); }; };
 
 // BB (The Bluebird^2)
 auto _bb = [](auto f, auto g, auto h) { return [=](auto x) { return f(g(h(x))); }; };
@@ -38,13 +39,17 @@ auto _l_ = [](auto x, auto y) { return x; };
 auto _r_ = [](auto x, auto y) { return y; };
 
 // Phi (The Phoenix)
-auto _phi = [](auto f, auto g, auto h) { return [=](auto x) { return g(f(x), h(x)); }; };
+auto _phi = [](auto f, auto g, auto h) {
+    return [=](auto&& x) { return g(f(std::forward<decltype(x)>(x)), h(std::forward<decltype(x)>(x))); };
+};
 
 // Phi1 (The Pheasant)
 auto _phi1_ = [](auto f, auto g, auto h) { return [=](auto x, auto y) { return g(f(x, y), h(x, y)); }; };
 
 // Psi (The Psi Bird)
-auto _psi = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x), g(y)); }; };
+auto _psi = [](auto f, auto g) {
+    return [=](auto&& x, auto&& y) { return f(g(std::forward<decltype(x)>(x)), g(std::forward<decltype(y)>(y))); };
+};
 
 // W (The Warbler)
 auto _w = [](auto f) { return [=](auto x) { return f(x, x); }; };

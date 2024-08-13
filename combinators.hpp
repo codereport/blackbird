@@ -83,6 +83,7 @@ auto _neg   = std::negate{};
 auto _not   = std::logical_not{};
 auto _sign  = [](auto x) { return x > 0 ? 1 : x < 0 ? -1 : 0; };
 auto _sqrt  = [](auto x) { return std::sqrt(x); };
+auto _sq    = [](auto x) { return x * x; };
 auto _min_  = [](auto x, auto y) { return std::min(x, y); };
 auto _max_  = [](auto x, auto y) { return std::max(x, y); };
 

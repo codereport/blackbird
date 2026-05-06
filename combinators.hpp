@@ -28,6 +28,12 @@ auto _b1 = [](auto f, auto g) { return [=](auto x, auto y) { return f(g(x, y)); 
 // C (The Cardinal) aka `flip` in Haskell
 auto _c = [](auto f) { return [=](auto x, auto y) { return f(y, x); }; };
 
+// S (The Starling) aka the hook in J
+auto _s = [](auto f, auto g) { return [=](auto x) { return f(x, g(x)); }; };
+
+// Sigma (The Violet Starling) aka the backhook
+auto _sigma = [](auto f, auto g) { return [=](auto x) { return g(f(x), x); }; };
+
 // D2 (The Dovekie)
 auto _d2_ = [](auto f, auto g, auto h) { return [=](auto x, auto y) { return g(f(x), h(y)); }; };
 
